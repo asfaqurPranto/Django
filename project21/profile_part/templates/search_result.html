@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block start %}
+
+  <div>
+    <h3>Search result for</h3>
+    <h3>"{{text}}"</h3>
+  </div>
+  <div>
+    {% comment %} <h1 style="text-align: center;">Search</h1> {% endcomment %}
+    <form action="{% url 'filterresult' %}" method="GET" style="max-width: 400px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); display: flex; flex-wrap: wrap; justify-content: space-between;">
+        <label for="search_by" style="font-weight: bold;">Filter by:</label>
+        <select id="search_by" name="search_by" style="flex: 1; margin-right: 10px;">
+            <option value="name">Name</option>
+            <option value="city">City</option>
+            <option value="profession">Profession</option>
+        </select>
+
+        <label for="query" style="font-weight: bold;">Search query:</label>
+        <input type="text" id="query" name="query" placeholder="Enter your query" style="flex: 1; margin-right: 10px;">
+
+        <input type="submit" value="Search" style="background-color: #007bff; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; cursor: pointer;">
+    </form>
+  </div>
+  {% for p in queryset %}
+  
+    <div class="card" style="width: 25%;">
+      {% include 'profile_card.html' %}
+    </div>
+  {% endfor %}
+{% endblock %}

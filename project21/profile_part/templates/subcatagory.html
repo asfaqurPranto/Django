@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block start %}
+  {% for profession in jobs %}
+    <a href="/people/{{ profession }}">
+      <div class="card border-primary mb-3" style="max-width: 18rem;">
+        <div class="card-header">{{ profession }}</div>
+        <div class="card-body text-primary">
+          {% comment %} <h5 class="card-title">Primary card title</h5> {% endcomment %}
+          <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex, sed.</p>
+        </div>
+      </div>
+    </a>
+  {% endfor %}
+
+
+
+{% endblock %}

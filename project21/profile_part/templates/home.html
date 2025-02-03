@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block start %}
+  {% comment %} {{ request.user }}
+  {{ request.user.first_name }} {% endcomment %}
+  <head>
+    <link rel="stylesheet" href="/static/main.css" />
+  </head>
+  <main>
+    <section id="intro-block" class="intro">
+      <p class="mx-4 primary-color h6 pt-2">"Get help from the Professionals"</p>
+      <h1 class="mx-4 mt-3 display-5 intro-h1">HelpMe</h1>
+      <div class="text-center timing text-secondary">
+        <p></p>
+      </div>
+    </section>
+    <section id="program" class="text-white p-2 pt-4">
+      <h2 class="text-center mt-3">Program</h2>
+      <div class="short-line"></div>
+      <ul class="d-flex flex-column my-3 mx-2">
+        <li class="program-item bg-light bg-opacity-10 py-3">
+          <a href=""><h4 class="text-center my-auto primary-color w-25">Businesss</h4></a>
+        </li>
+        <li class="program-item bg-light bg-opacity-10 py-3">
+          <a href=""><h4 class="text-center my-auto primary-color w-25">Construction</h4></a>
+        </li>
+        <li class="program-item bg-light bg-opacity-10 py-3">
+          <a href=""><h4 class="text-center my-auto primary-color w-25">Law</h4></a>
+        </li>
+        <li class="program-item bg-light bg-opacity-10 py-3">
+          <a href="/subcatagory/health"><h4 class="text-center my-auto primary-color w-25">Healthcare</h4></a>
+        </li>
+        <li class="program-item bg-light bg-opacity-10 py-3">
+          <a href="/subcatagory/it"><h4 class="text-center my-auto primary-color w-25">IT</h4></a>
+        </li>
+        <li class="program-item bg-light bg-opacity-10 py-3">
+          <a href=""><h4 class="text-center my-auto primary-color w-25">Agricultural and Vet</h4></a>
+        </li>
+      </ul>
+      <div>
+        <button type="button" class="attend-btn mb-3 text-white" id="joinUs">MORE</button>
+      </div>
+    </section>
+    <section id="professionals" class="d-flex flex-column align-items-center p-4 bg-light">
+      <h2 class="text-center mt-4 secondary-color">Top Professionals</h2>
+      <div class="short-line my-3"></div>
+      <ul class="professional-list" id="professional-list"></ul>
+      <div>
+        <button type="button" class="show-more-btn m-3 secondary-color w-75 only-mobile">
+          MORE
+          <img src="img/expand_more_black_24dp.svg" alt="expand_more icon" />
+        </button>
+      </div>
+    </section>
+    <div class="row justify-content-center">
+      {% for p in prfls %}
+        <div class="col-md-4 mb-3">
+          <div class="card p-5">
+            <!-- Added p-3 class for padding -->
+            {% include 'profile_card.html' %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </main>
+  <script src="/static/main.js"></script>
+{% endblock %}
