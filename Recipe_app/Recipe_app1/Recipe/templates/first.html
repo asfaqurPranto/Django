@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Recipes{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Recipes</h1>
+        <br><br>
+        {% for recipe in recipes %}
+        <div class="recipe">
+            <h2>{{ recipe.title }}</h2>
+            
+            <p><strong>Ingredients:</strong> {{ recipe.ingredients }}</p>
+            <p><strong>Instructions:</strong> {{ recipe.instructions }}</p>
+            <p class="date"><em>Created on: {{ recipe.created_at|date:"F j, Y" }}</em></p>
+            <a href="{% url 'Delete' recipe.title %}">Delete</a>
+
+            <br>
+        </div>
+        {% empty %}
+        <p>No recipes found.</p>
+        {% endfor %}
+
+        <a href="{% url 'add_recipe' %}" class="back-link">Add a New Recipe</a>
+    </div>
+{% endblock %}

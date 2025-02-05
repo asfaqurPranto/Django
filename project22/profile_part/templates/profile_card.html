@@ -1,0 +1,40 @@
+<a href="{% url 'userdetails'  p.user.email  %}">
+  {% comment %} <div class="card" style="border-radius: 15px;">
+    {% endcomment %}
+    <title>
+      {{p.user.profile_username}}
+    </title>
+    <div class="card-body text-center">
+      <div class="mt-3 mb-4">
+        <img src="/static/profilepic.png" class="rounded-circle img-fluid" style="width: 100px;" />
+      </div>
+      <h4 class="mb-2">{{ p.profile_username }}</h4>
+      <p class="text-muted mb-4">
+        {{ p.bio }}
+        {% comment %} <span class="mx-2">|</span> <a href="#!">mdbootstrap.com</a> {% endcomment %}
+      </p>
+      
+      <p class="text-muted mb-4">
+        {% if p.user.email %}
+          Email: {{ p.user.email }}
+        {% endif %}
+        <br>
+        {% if p.phone %}
+          Phone: {{ p.phone }}
+        {% endif %}
+
+        {% comment %} <span class="mx-2">|</span> <a href="#!">mdbootstrap.com</a> {% endcomment %}
+      </p>
+      <p class="text-muted mb-4">
+        {% if p.city %}
+        from {{ p.city }} ,
+        {% endif %}
+        {{ p.country }}
+        {% comment %} <span class="mx-2">|</span> <a href="#!">mdbootstrap.com</a> {% endcomment %}
+      </p>
+      <button type="button" class="btn btn-primary btn-rounded btn-lg"><a href="{% url 'meeting' %}">Contact</a></button>
+      <div class="d-flex justify-content-between text-center mt-5 mb-2"></div>
+    </div>
+    {% comment %}
+  </div> {% endcomment %}
+</a>

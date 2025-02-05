@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+
+    <title>Register</title>
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <div class="container mt-5">
+        <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <h2>Register</h2>
+          <div class="alert alert-primary" role="alert">
+            {% for message in messages %}
+              {{ message }}
+            {% endfor %}
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">First name</label>
+            <input type="text" name="first_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Last name</label>
+            <input type="text" name="last_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">email</label>
+            {% comment %} <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" /> {% endcomment %}
+            <input type="email" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">username</label>
+            <input type="text" name="profile_username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" name="password" class="form-control" id="exampleInputPassword1" />
+          </div>
+
+          {% comment %}From here I have modified{% endcomment %}
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Country</label>
+            <input type="text" name="country" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">City</label>
+            <input type="text" name="city" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Phone</label>
+            <input type="text" name="phone" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+          </div>
+
+          {% comment %} <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Profession</label>
+            <input type="text" name="profession" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+          </div> {% endcomment %}
+          <div class="mt-3">
+            <label for="exampleInputEmail1">Select profession</label>
+            <select class="form-control" name="profession" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+              <option value="" disabled selected>Select</option>
+              <option value="Frontend dev">Frontend dev</option>
+              <option value="Backend dev">Backend dev</option>
+              <option value="Data scientist">Data scientist</option>
+              <option value="Cardiologist">Cardiologist</option>
+              <option value="Surgeon">Surgeon</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Bio</label>
+            <textarea name="bio" class="form-control" required></textarea>
+          </div>
+
+          <p>
+            Already have account <a href="/">login</a>
+          </p>
+          <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+      </div>
+    </main>
+    <footer></footer>
+  </body>
+
+<script>
+    $('.select2').select2();
+</script>
+</html>

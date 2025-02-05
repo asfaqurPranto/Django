@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% block title %}
+        My Recipe App
+      {% endblock %}
+    </title>
+
+    <!-- External or Internal CSS -->
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      .container {
+        width: 80%;
+        margin: 20px auto;
+        background: white;
+        padding: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+      }
+      header {
+        background: #333;
+        color: white;
+        padding: 15px 0;
+        text-align: center;
+      }
+      nav {
+        text-align: center;
+        margin-top: 10px;
+      }
+      nav a {
+        text-decoration: none;
+        color: white;
+        padding: 10px 15px;
+        display: inline-block;
+        margin: 5px;
+      }
+      nav a:hover {
+        background: #555;
+      }
+      .add-recipe-btn {
+        background-color: #e74c3c; /* Red Background */
+        color: white;
+        padding: 12px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        border: none;
+        text-decoration: none;
+      }
+      .add-recipe-btn:hover {
+        background-color: #c0392b;
+      }
+      .search-bar-container {
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .search-bar {
+        width: 60%; /* Wider search bar */
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+      }
+      .find-recipe-btn {
+        background-color: #28a745; /* Green Background */
+        color: white;
+        padding: 10px 15px;
+        border-radius: 15px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+      }
+      .find-recipe-btn:hover {
+        background-color: #218838;
+      }
+      .content {
+        padding: 20px;
+      }
+      footer {
+        text-align: center;
+        padding: 15px;
+        background: #333;
+        color: white;
+        margin-top: 20px;
+      }
+    </style>
+
+    {% block extra_css %}
+    {% endblock %}
+  </head>
+  <body>
+    <header>
+      <h1>My Recipe App</h1>
+      <nav>
+        {% comment %} <a href="{% url 'recipe_list' %}">Home</a> {% endcomment %}
+        <a href="{% url 'add_recipe' %}" class="add-recipe-btn">Add Recipe</a>
+      </nav>
+    </header>
+
+    <div class="container">
+      <div class="content">
+        <div class="search-bar-container">
+          <label for="search" class="search-label">Find Recipe:</label>
+          <form method="GET" action="{% url 'search' %}">
+            <input type="text" name="query" id="query" class="search-bar" placeholder="Search for a recipe..." value="{{ request.GET.query }}" />
+            <button type="submit" class="find-recipe-btn">Search</button>
+          </form>
+        </div>
+
+        {% block content %}
+        {% endblock %}
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; [Md Asfaqur Rahman]</p>
+    </footer>
+
+    {% block extra_js %}
+    {% endblock %}
+  </body>
+</html>
